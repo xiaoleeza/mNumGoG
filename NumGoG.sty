@@ -8,12 +8,19 @@
 \RequirePackage{xparse,etoolbox}
 \RequirePackage{ifthen}
 
+  
+
 \NewDocumentCommand{\numcircle}{ O{0.8em} O{-0.15ex} O{0} m }{%
-  \ifthenelse{#3=0}{%
-    \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1}]{NumGo.pdf}}%
-  }{%
-    \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1001}]{NumGo.pdf}}
-  }%
+  \ifnumgreater{#4}{999}%
+      {%
+        \typeout{The value of input number is \number#4, larger than 999}%
+      }{%
+        \ifthenelse{#3=0}{%
+            \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1}]{NumGo.pdf}}%
+          }{%
+            \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1001}]{NumGo.pdf}}
+          }%
+      }% 
 }
 
 \endinput
