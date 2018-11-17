@@ -1,0 +1,21 @@
+% -------------------------------------------------------------- %
+%         基于插图方式的NumGoG{G for Graphicx}                    %
+% -------------------------------------------------------------- %
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{NumGoG}[2018/11/11 v1.00 well-designed (TeX)]
+
+\RequirePackage{graphicx}
+\RequirePackage{xparse,etoolbox}
+\RequirePackage{ifthen}
+
+\NewDocumentCommand{\numcircle}{ O{0.8em} O{-0.15ex} O{0} m }{%
+  \ifthenelse{#3=0}{%
+    \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1}]{NumGo.pdf}}%
+  }{%
+    \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1002}]{NumGo.pdf}}
+  }%
+}
+
+\endinput
+%%
+%% End of file `NumGoG.sty'.

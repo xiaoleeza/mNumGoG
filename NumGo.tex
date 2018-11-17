@@ -1,0 +1,40 @@
+% -------------------------------------------------------------- %
+%                  本文档用来生成NumGo.pdf                        %
+%                生成阴阳两种 0-1000 带圈内数字                   %
+% -------------------------------------------------------------- %
+\documentclass{ctexart}
+\usepackage{geometry}
+\geometry{paperheight=1.25em,paperwidth=1.1em,top=0pt,bottom=1.3pt,left=0pt,right=0pt}
+
+%% 这里可以修改数字字体
+%\usepackage{fontspec}
+%\newfontfamily\gos{go.otf}
+
+\usepackage{tikz}
+
+\newlength\szg
+\newcommand\oNumW[1]{%
+\settoheight\szg{#1}%
+\tikz[baseline]{\pgfmathparse{%
+ifthenelse(#1 < 10, 1, ifthenelse(#1 < 100, 0.75, 0.5))%
+}
+\let\hfs\pgfmathresult%
+\node[black] at (0,\szg/2) {\makebox[0em][c]{\scalebox{\hfs}[1]{#1}}};%
+\draw[black,line width=0.1ex] (0,1.6ex/2) circle (1.6ex/2+0.42ex);
+}}
+
+
+\protected\def\oNumB#1{%
+\settoheight\szg{#1}%
+\tikz[baseline]{\pgfmathparse{%
+ifthenelse(#1 < 10, 1, ifthenelse(#1 < 100, 0.75, 0.5))%
+}
+\let\hfs\pgfmathresult%
+\fill (0,1.6ex/2) circle (1.6ex/2+0.42ex);%
+\node[white] at (0,\szg/2) {\makebox[0em][c]{\scalebox{\hfs}[1]{\textbf{#1}}}};%
+}}
+                       
+\begin{document}
+\foreach \i in {0,1,...,999} {\noindent\oNumW\i\newpage}
+\foreach \i in {0,1,...,999} {\noindent\oNumB\i\newpage}
+\end{document}
