@@ -10,15 +10,15 @@
 
   
 
-\NewDocumentCommand{\numcircle}{ O{0.8em} O{-0.15ex} O{0} m }{%
+\NewDocumentCommand{\numcircle}{ O{0} O{0.8em} O{-0.15ex} m }{%
   \ifnumgreater{#4}{999}%
       {%
         \typeout{The value of input number is \number#4, larger than 999}%
       }{%
-        \ifthenelse{#3=0}{%
-            \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1}]{NumGo.pdf}}%
+        \ifthenelse{#1=0}{%
+            \raisebox{#3}{\includegraphics[height=#2,page={\number\numexpr#4 + 1}]{NumGo.pdf}}%
           }{%
-            \raisebox{#2}{\includegraphics[height=#1,page={\number\numexpr#4 + 1001}]{NumGo.pdf}}
+            \raisebox{#3}{\includegraphics[height=#2,page={\number\numexpr#4 + 1001}]{NumGo.pdf}}
           }%
       }% 
 }

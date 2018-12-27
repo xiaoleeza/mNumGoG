@@ -1,10 +1,40 @@
 \documentclass{ctexart}
+
 \usepackage{amsmath}
+\usepackage{mathtools}
+
+\newtagform{brackets2}{}{}
+\usetagform{brackets2}
 
 \usepackage{NumGoG}
+
+
                          
 \begin{document}
+可选参数1 2 3的位置调换了下
 
-asdf asdf \numcircle{3}$a^\text{\numcircle{3}d}$ \numcircle[.8em][-0.15ex]{3}h \numcircle[.85em][-0.15ex][1]{2}lj wer \numcircle[.85em][-0.15ex][1]{0}fsd \numcircle{1000}
+asdf asdf \numcircle{3}$a^\text{\numcircle{3}d}$ \numcircle[0][.8em][-0.15ex]{3}h \numcircle[1][.85em][-0.15ex]{2}lj wer \numcircle[1][.85em][-0.15ex]{0}fsd \numcircle{1000}
 
+这里给一个脚注使用带圈数字的示例这里给一个脚注使用带圈数字的示例
+\addtocounter{footnote}{749}
+\renewcommand{\thefootnote}{\numcircle{\value{footnote}}}
+
+fdfaf sdf klwer wer\footnote{text}
+
+这里给一个公式使用带圈数字的示例
+\setcounter{equation}{749}
+\renewcommand{\theequation}{\numcircle{\value{equation}}}
+\begin{align}
+\int_{0}^{+\infty}f(x)\,\mathrm{d}x
+\end{align}
+
+这里给一个列表使用带圈数字的示例
+\renewcommand\theenumi{\numcircle[1]{\value{enumi}}}
+\renewcommand\labelenumi{\theenumi}
+
+\begin{enumerate}\setcounter{enumi}{256}
+\item ddddffff
+\item ghefwef
+\item fhfgoiwe
+\end{enumerate}
 \end{document}
